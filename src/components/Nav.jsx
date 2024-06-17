@@ -1,86 +1,82 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai'
 
 const Nav = () => {
-  const [navVisible, setNavVisible] = useState(true)
+  // State to manage the visibility of the mobile menu
   const [nav, setNav] = useState(false)
 
-  const handleScroll = () => {
-    const currentScrollPos = window.scrollY
-    const prevScrollPos = window.prevScrollPos || 0
-
-    if (currentScrollPos > prevScrollPos) {
-      setNavVisible(false)
-    } else {
-      setNavVisible(true)
-    }
-
-    window.prevScrollPos = currentScrollPos
-  }
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
-
-  const handleNav = () => {
+  // Function to toggle the mobile menu
+  const toggleNav = () => {
     setNav(!nav)
   }
 
+  // Function to handle clicks on nav links
+  const handleNavLinkClick = (id) => {
+    // Close the mobile menu
+    setNav(false)
+    // Scroll smoothly to the target section
+    document.querySelector(id).scrollIntoView({ behavior: 'smooth' })
+  }
+
+  // Navigation items
   const navItems = [
-    { id: 1, text: 'Home', itemId: '#home' },
-    { id: 2, text: 'About', itemId: '#about' },
-    { id: 3, text: 'Stack', itemId: '#stack' },
-    { id: 4, text: 'Project', itemId: '#project' },
-    { id: 5, text: 'Contact', itemId: '#contact' },
+    { id: '#home', text: 'Home' },
+    { id: '#about', text: 'About' },
+    { id: '#projects', text: 'Projects' },
+    { id: '#contacts', text: 'Contacts' },
   ]
 
   return (
-    <nav
-      className={`h-20 bg-slate-950 text-white flex justify-between items-center px-4 z-10 transition-transform duration-300 ${
-        navVisible ? 'translate-y-0' : '-translate-y-full'
-      } fixed w-full top-0`}
-    >
-      <a
-        href='/'
-        className='text-indigo-500 text-xl font-medium cursor-pointer'
-      >
-        EverDev
+    <nav className='fixed top-0 h-20 w-full flex justify-between items-center px-[2.5rem] z-10 shadow-md'>
+      {/* Logo */}
+      <a className='text-xl font-black' href='/'>
+        Allester.dev
       </a>
 
-      <div className='hidden md:flex gap-8'>
+      {/* Desktop navigation links */}
+      <div className='hidden md:flex gap-6'>
         {navItems.map((item) => (
-          <a
-            className='relative text-slate-200 after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-slate-200 after:transform after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-right hover:after:bg-indigo-500'
-            href={item.itemId}
-            key={item.id}
-          >
+          <a className='font-bold text-base' href={item.id} key={item.id}>
             {item.text}
           </a>
         ))}
       </div>
 
-      <div onClick={handleNav} className='block md:hidden cursor-pointer'>
-        {nav ? <AiOutlineClose size={20} /> : <AiOutlineMenu size={20} />}
+      {/* Mobile menu icon */}
+      <div
+        className='block md:hidden cursor-pointer hover:text-blue-800'
+        onClick={toggleNav}
+      >
+        <AiOutlineMenu size={24} />
       </div>
 
+      {/* Mobile menu */}
       <div
-        className={`bg-slate-900 flex flex-col fixed md:hidden right-0 top-20 w-48 ease-in-out duration-300 transform ${
-          nav ? 'translate-x-0' : 'translate-x-full'
+        className={`bg-white h-screen w-full z-20 fixed md:hidden top-0 left-0 py-[1.8rem] px-[2.5rem] ease-in-out duration-300 transform ${
+          nav ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
-        {navItems.map((item) => (
-          <a
-            className='relative text-slate-200 after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-slate-200 after:transform after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-right hover:after:bg-indigo-500 p-3'
-            href={item.itemId}
-            key={item.id}
-          >
-            {item.text}
-          </a>
-        ))}
+        {/* Mobile menu close icon */}
+        <div
+          className='flex justify-end md:hidden cursor-pointer hover:text-blue-800'
+          onClick={toggleNav}
+        >
+          <AiOutlineClose size={24} />
+        </div>
+
+        {/* Mobile navigation links */}
+        <div className='h-full flex justify-center items-center flex-col gap-10 pb-7'>
+          {navItems.map((item) => (
+            <a
+              className='text-2xl font-medium hover:text-blue-800'
+              href={item.id}
+              key={item.id}
+              onClick={() => handleNavLinkClick(item.id)}
+            >
+              {item.text}
+            </a>
+          ))}
+        </div>
       </div>
     </nav>
   )
