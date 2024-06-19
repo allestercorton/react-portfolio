@@ -17,6 +17,6 @@ export const navItems = [
 ]
 
 export const heroContents = {
-  heading: 'Passionate Web Developer',
+  heading: 'Full-Stack Web Developer',
   text: `Greetings! I'm ${profile.name}, a Full-Stack Web Developer from ${profile.address}.`,
 }

@@ -20,16 +20,20 @@ const Nav = () => {
   }
 
   return (
-    <nav className='bg-white fixed top-0 h-20 w-full flex justify-between items-center px-[2.5rem] md:px-[3rem] shadow-md z-40'>
+    <nav className='bg-white fixed top-0 h-16 md:h-20 w-full flex justify-between items-center px-[1.2rem] md:px-[3rem] shadow-md z-40'>
       {/* Logo */}
-      <a className='text-xl font-black' href='/'>
+      <a className='text-xl font-bold' href='/'>
         Allester.dev
       </a>
 
       {/* Desktop navigation links */}
       <div className='hidden md:flex gap-6'>
         {navItems.map((item) => (
-          <a className='font-bold text-base' href={item.id} key={item.id}>
+          <a
+            className='font-bold text-base hover:text-blue-800'
+            href={item.id}
+            key={item.id}
+          >
             {item.text}
           </a>
         ))}
@@ -37,7 +41,7 @@ const Nav = () => {
 
       {/* Mobile menu icon */}
       <div
-        className='block md:hidden cursor-pointer hover:text-blue-800'
+        className='block md:hidden cursor-pointer hover:text-blue-600'
         onClick={toggleNav}
       >
         <AiOutlineMenu size={24} />
@@ -45,13 +49,13 @@ const Nav = () => {
 
       {/* Mobile menu */}
       <div
-        className={`bg-white h-screen w-full fixed md:hidden top-0 left-0 py-[1.8rem] px-[2.5rem] ease-in-out duration-300 z-50 transform ${
+        className={`bg-white h-screen w-full fixed md:hidden top-0 left-0 py-[1.8rem] px-[1.2rem] ease-in-out duration-300 z-50 transform ${
           nav ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
         {/* Mobile menu close icon */}
         <div
-          className='flex justify-end md:hidden cursor-pointer hover:text-blue-800'
+          className='flex justify-end md:hidden cursor-pointer hover:text-blue-600'
           onClick={toggleNav}
         >
           <AiOutlineClose size={24} />
@@ -61,7 +65,7 @@ const Nav = () => {
         <div className='h-full flex justify-center items-center flex-col gap-10 pb-7'>
           {navItems.map((item) => (
             <a
-              className='text-2xl font-medium hover:text-blue-800'
+              className='text-2xl font-medium hover:text-blue-600'
               href={item.id}
               key={item.id}
               onClick={() => handleNavLinkClick(item.id)}
