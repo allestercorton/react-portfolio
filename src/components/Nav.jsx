@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai'
+import { navItems } from '../data'
 
 const Nav = () => {
   // State to manage the visibility of the mobile menu
@@ -18,16 +19,8 @@ const Nav = () => {
     document.querySelector(id).scrollIntoView({ behavior: 'smooth' })
   }
 
-  // Navigation items
-  const navItems = [
-    { id: '#home', text: 'Home' },
-    { id: '#about', text: 'About' },
-    { id: '#projects', text: 'Projects' },
-    { id: '#contacts', text: 'Contacts' },
-  ]
-
   return (
-    <nav className='fixed top-0 h-20 w-full flex justify-between items-center px-[2.5rem] z-10 shadow-md'>
+    <nav className='bg-white fixed top-0 h-20 w-full flex justify-between items-center px-[2.5rem] md:px-[3rem] shadow-md z-40'>
       {/* Logo */}
       <a className='text-xl font-black' href='/'>
         Allester.dev
@@ -52,7 +45,7 @@ const Nav = () => {
 
       {/* Mobile menu */}
       <div
-        className={`bg-white h-screen w-full z-20 fixed md:hidden top-0 left-0 py-[1.8rem] px-[2.5rem] ease-in-out duration-300 transform ${
+        className={`bg-white h-screen w-full fixed md:hidden top-0 left-0 py-[1.8rem] px-[2.5rem] ease-in-out duration-300 z-50 transform ${
           nav ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
