@@ -49,7 +49,7 @@ const Nav = () => {
 
       {/* Mobile menu */}
       <div
-        className={`bg-white h-screen w-full fixed md:hidden top-0 left-0 py-[1.8rem] px-[1.2rem] ease-in-out duration-300 z-50 transform ${
+        className={`bg-white h-screen w-full fixed md:hidden top-0 left-0 py-[1.3rem] px-[1.2rem] ease-in-out duration-300 z-50 transform ${
           nav ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
