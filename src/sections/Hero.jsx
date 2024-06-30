@@ -4,7 +4,7 @@ import TechStack from '../components/TechStack'
 
 const Hero = () => {
   return (
-    <section className='min-h-screen w-full bg-gray-50 pt-[5rem] md:pt-[11rem] px-4 md:px-[12.5rem] md:mt-[-3.1rem]'>
+    <section className='min-h-screen w-full bg-gray-50 pt-[5rem] md:pt-[11rem] px-6 md:px-[12.5rem] md:mt-[-3.1rem]'>
       <div className='flex flex-col md:flex-row-reverse items-center md:justify-center gap-8 md:gap-[11rem] text-center md:text-left'>
         {/* Profile picture */}
         <img

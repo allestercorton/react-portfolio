@@ -20,7 +20,7 @@ const Nav = () => {
   }
 
   return (
-    <nav className='bg-white fixed top-0 h-16 md:h-20 w-full flex justify-between items-center px-[1.2rem] md:px-[3rem] shadow-md z-40'>
+    <nav className='bg-white fixed top-0 h-16 md:h-20 w-full flex justify-between items-center px-6 md:px-[3rem] shadow-md z-40'>
       {/* Logo */}
       <a className='text-xl font-bold' href='/'>
         Allester.dev
